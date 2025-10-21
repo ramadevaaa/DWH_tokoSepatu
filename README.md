@@ -15,10 +15,10 @@ Proyek ini menerapkan metodologi **Kimball Nine-Step**, mencakup perancangan str
 
 | 📁 Folder / File | Deskripsi |
 |------------------|-----------|
-| `scripts/01_Create_DWH_Toko_Sepatu.sql` | Membuat struktur database `dwh_toko_sepatu` (dimensi, fakta, dan index). |
-| `scripts/02_ETL_DWH_Toko_Sepatu.sql` | Proses ETL dari `db_toko_sepatu` → `dwh_toko_sepatu`. |
-| `scripts/03_Query_Analytic.sql` | Query analisis dan validasi kualitas data. |
-| `scripts/db_toko_sepatu.sql` | Database operasional OLTP. |
+| `scripts/DWH_Toko_Sepatu.sql` | Membuat struktur database `dwh_toko_sepatu` (dimensi, fakta, dan index). |
+| `scripts/ETL_DWH_Toko_Sepatu.sql` | Proses ETL dari `db_toko_sepatu` → `dwh_toko_sepatu`. |
+| `scripts/Query_Analytic.sql` | Query analisis dan validasi kualitas data. |
+| `scripts/toko_sepatu.sql` | Database operasional OLTP. |
 | `docs/DWH_Design_Diagram.png` | (Opsional) Diagram Star Schema DWH. |
 | `docs/ERD_Toko_Sepatu.png` | (Opsional) ERD database operasional. |
 | `README.md` | Dokumentasi utama proyek. |
@@ -52,10 +52,10 @@ Proyek ini menerapkan metodologi **Kimball Nine-Step**, mencakup perancangan str
 
 | No | File | Deskripsi |
 |----|------|------------|
-| 1️⃣ | **01_Create_DWH_Toko_Sepatu.sql** | Membuat struktur database `dwh_toko_sepatu`, mencakup tabel dimensi (`dim_produk`, `dim_pelanggan`, `dim_toko`, `dim_waktu`, `dim_supplier`, dll.) dan tabel fakta (`fact_penjualan`, `fact_pembelian`) lengkap dengan relasi dan indeks. |
-| 2️⃣ | **02_ETL_DWH_Toko_Sepatu.sql** | Melakukan proses **ETL (Extract, Transform, Load)** dari `db_toko_sepatu` ke `dwh_toko_sepatu`, termasuk transformasi data, pembentukan dimensi waktu, serta perhitungan HPP dan margin. |
-| 3️⃣ | **03_Query_Analytic.sql** | Kumpulan *analytical queries* untuk validasi data dan analisis bisnis seperti performa penjualan, produk terlaris, segmentasi pelanggan, dan profitabilitas produk. |
-| 4️⃣ | **db_toko_sepatu.sql** | Database sumber (OLTP) berisi tabel transaksi harian dan master data seperti `tb_produk`, `tb_pelanggan`, `tb_penjualan`, `tb_pembelian`, `tb_pegawai`. |
+| 1️⃣ | **DWH_Toko_Sepatu.sql** | Membuat struktur database `dwh_toko_sepatu`, mencakup tabel dimensi (`dim_produk`, `dim_pelanggan`, `dim_toko`, `dim_waktu`, `dim_supplier`, dll.) dan tabel fakta (`fact_penjualan`, `fact_pembelian`) lengkap dengan relasi dan indeks. |
+| 2️⃣ | **ETL_DWH_Toko_Sepatu.sql** | Melakukan proses **ETL (Extract, Transform, Load)** dari `db_toko_sepatu` ke `dwh_toko_sepatu`, termasuk transformasi data, pembentukan dimensi waktu, serta perhitungan HPP dan margin. |
+| 3️⃣ | **Query_Analytic.sql** | Kumpulan *analytical queries* untuk validasi data dan analisis bisnis seperti performa penjualan, produk terlaris, segmentasi pelanggan, dan profitabilitas produk. |
+| 4️⃣ | **toko_sepatu.sql** | Database sumber (OLTP) berisi tabel transaksi harian dan master data seperti `tb_produk`, `tb_pelanggan`, `tb_penjualan`, `tb_pembelian`, `tb_pegawai`. |
 
 ---
 
@@ -122,15 +122,4 @@ Proyek ini menerapkan metodologi **Kimball Nine-Step**, mencakup perancangan str
 | **Metabase** | Dashboard analisis interaktif untuk tim bisnis. |
 
 ---
-
-## 🏁 Kesimpulan  
-
-Data Warehouse Toko Sepatu berhasil dibangun dengan struktur **Star Schema** yang kuat dan proses **ETL lintas platform** yang stabil.  
-Semua *analytical queries* memberikan insight yang akurat untuk kebutuhan analisis penjualan, pembelian, pelanggan, dan produk.  
-Proyek ini siap diintegrasikan ke dashboard BI untuk analisis lanjutan dan pengambilan keputusan strategis.
-
----
-
-> ✅ **ETL & Analytics Validation Completed!**  
-> 📦 DWH siap digunakan untuk analisis bisnis dan integrasi Business Intelligence.
 
