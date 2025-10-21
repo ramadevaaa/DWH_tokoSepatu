@@ -9,21 +9,7 @@
 Repositori ini berisi implementasi lengkap **Data Warehouse (DWH)** untuk sistem **Toko Sepatu**, dibangun menggunakan **MySQL** sebagai database operasional dan **PostgreSQL** sebagai target Data Warehouse.  
 Proyek ini menerapkan metodologi **Kimball Nine-Step**, mencakup perancangan struktur database, proses **ETL (Extract–Transform–Load)**, serta analisis bisnis berbasis **Star Schema** untuk mendukung pengambilan keputusan strategis.
 
----
 
-## 📦 Struktur Folder  
-
-| 📁 Folder / File | Deskripsi |
-|------------------|-----------|
-| `scripts/DWH_Toko_Sepatu.sql` | Membuat struktur database `dwh_toko_sepatu` (dimensi, fakta, dan index). |
-| `scripts/ETL_DWH_Toko_Sepatu.sql` | Proses ETL dari `db_toko_sepatu` → `dwh_toko_sepatu`. |
-| `scripts/Query_Analytic.sql` | Query analisis dan validasi kualitas data. |
-| `scripts/toko_sepatu.sql` | Database operasional OLTP. |
-| `docs/DWH_Design_Diagram.png` | (Opsional) Diagram Star Schema DWH. |
-| `docs/ERD_Toko_Sepatu.png` | (Opsional) ERD database operasional. |
-| `README.md` | Dokumentasi utama proyek. |
-
----
 
 ## 🎯 Tujuan Proyek  
 
