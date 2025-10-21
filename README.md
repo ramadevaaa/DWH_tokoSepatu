@@ -114,12 +114,4 @@ Proyek ini menerapkan metodologi **Kimball Nine-Step**, mencakup perancangan str
 
 ---
 
-## 🌐 Integrasi BI (Opsional)  
-
-| Tools | Fungsi |
-|--------|--------|
-| **Power BI** | Visualisasi performa penjualan, pelanggan, dan produk. |
-| **Metabase** | Dashboard analisis interaktif untuk tim bisnis. |
-
----
 
