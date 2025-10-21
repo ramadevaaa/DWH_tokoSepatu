@@ -1,75 +1,136 @@
-🏬 Data Warehouse Toko Sepatu
+# 🏬 Data Warehouse Toko Sepatu  
 
-Repositori ini berisi implementasi lengkap Data Warehouse (DWH) untuk sistem Toko Sepatu, menggunakan MySQL dan PostgreSQL sebagai platform basis data utama.
-Proyek ini mencakup seluruh tahapan pembangunan Data Warehouse berdasarkan metodologi Kimball Nine-Step, mulai dari pembuatan struktur database, proses ETL (Extract, Transform, Load), hingga analisis data bisnis berbasis Star Schema.
+![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-blue?logo=postgresql)
+![MySQL](https://img.shields.io/badge/Source-MySQL-orange?logo=mysql)
+![DBeaver](https://img.shields.io/badge/Tool-DBeaver-green?logo=dbeaver)
+![ETL Process](https://img.shields.io/badge/ETL-Implemented-success)
+![Status](https://img.shields.io/badge/Project_Status-Completed-brightgreen)
 
-📂 Struktur File
-No	File	Deskripsi
-1️⃣	DWH_Toko_Sepatu.sql	Membuat struktur database dwh_toko_sepatu, mencakup tabel dimensi (dim_produk, dim_pelanggan, dim_supplier, dim_toko, dim_waktu, dll.), tabel fakta (fact_penjualan, fact_pembelian), serta pembuatan indeks dan relasi Star Schema.
-2️⃣	ETL_DWH_Toko_Sepatu.sql	Berisi proses ETL untuk menyalin, membersihkan, dan mentransformasi data dari database operasional db_toko_sepatu ke dwh_toko_sepatu. Termasuk pembangkitan surrogate key dan dimensi waktu.
-3️⃣	Query_Analytic.sql	Kumpulan analytical queries untuk analisis bisnis dan validasi kualitas data. Meliputi performa penjualan bulanan, produk terlaris, analisis pelanggan, kinerja pegawai, dan segmentasi diskon.
-4️⃣	toko_sepatu.sql	Database operasional (OLTP) yang merepresentasikan sistem transaksi harian toko sepatu, mencakup tabel seperti tb_produk, tb_pelanggan, tb_pembelian, tb_penjualan, dan tb_pegawai.
-🧠 Tujuan Proyek
+Repositori ini berisi implementasi lengkap **Data Warehouse (DWH)** untuk sistem **Toko Sepatu**, dibangun menggunakan **MySQL** sebagai database operasional dan **PostgreSQL** sebagai target Data Warehouse.  
+Proyek ini menerapkan metodologi **Kimball Nine-Step**, mencakup perancangan struktur database, proses **ETL (Extract–Transform–Load)**, serta analisis bisnis berbasis **Star Schema** untuk mendukung pengambilan keputusan strategis.
 
-Membangun model Data Warehouse Toko Sepatu yang mampu menyimpan data historis transaksi penjualan dan pembelian secara analitis.
+---
 
-Mengimplementasikan proses ETL lintas platform antara sistem operasional dan DWH (MySQL → PostgreSQL).
+## 📦 Struktur Folder  
 
-Menerapkan desain Star Schema untuk mendukung analisis multidimensi (produk, pelanggan, waktu, toko, pegawai).
+| 📁 Folder / File | Deskripsi |
+|------------------|-----------|
+| `scripts/01_Create_DWH_Toko_Sepatu.sql` | Membuat struktur database `dwh_toko_sepatu` (dimensi, fakta, dan index). |
+| `scripts/02_ETL_DWH_Toko_Sepatu.sql` | Proses ETL dari `db_toko_sepatu` → `dwh_toko_sepatu`. |
+| `scripts/03_Query_Analytic.sql` | Query analisis dan validasi kualitas data. |
+| `scripts/db_toko_sepatu.sql` | Database operasional OLTP. |
+| `docs/DWH_Design_Diagram.png` | (Opsional) Diagram Star Schema DWH. |
+| `docs/ERD_Toko_Sepatu.png` | (Opsional) ERD database operasional. |
+| `README.md` | Dokumentasi utama proyek. |
 
-Menghasilkan laporan bisnis dan insight analitis yang dapat membantu pengambilan keputusan strategis.
+---
 
-⚙️ Teknologi yang Digunakan
-Komponen	Teknologi
-🧱 Database Engine	MySQL & PostgreSQL
-💬 Query Language	SQL / PLpgSQL
-🧰 Development Tool	DBeaver
-🔄 ETL Framework	Manual SQL Script (Transform & Load)
-📊 Visualization Ready	Mendukung integrasi dengan BI Tools seperti Power BI / Metabase
-📈 Hasil Analisis
+## 🎯 Tujuan Proyek  
 
-Setelah seluruh proses dijalankan, Data Warehouse menghasilkan berbagai laporan dan validasi yang berguna, di antaranya:
+| Tujuan | Penjelasan |
+|--------|-------------|
+| 🧱 **Membangun Model DWH** | Menyimpan data historis transaksi penjualan & pembelian secara analitis. |
+| 🔄 **Implementasi ETL Lintas Platform** | Menyelaraskan data dari MySQL (OLTP) ke PostgreSQL (DWH). |
+| 🌟 **Desain Star Schema** | Mendukung analisis multidimensi: produk, pelanggan, waktu, toko, pegawai. |
+| 💹 **Analisis Bisnis Terukur** | Menghasilkan laporan & insight strategis untuk pengambilan keputusan. |
 
-🧩 Data Quality Validation
+---
 
-✅ Record Count Summary: memastikan jumlah baris antara OLTP dan DWH sinkron.
+## ⚙️ Teknologi yang Digunakan  
 
-📅 Date Range Coverage: memverifikasi rentang waktu transaksi penjualan & pembelian.
+| Komponen | Teknologi |
+|-----------|------------|
+| 🧱 Database Engine | MySQL (OLTP), PostgreSQL (DWH) |
+| 💬 Query Language | SQL / PLpgSQL |
+| 🧰 Tool | DBeaver (untuk migrasi & ETL) |
+| 🔄 ETL Framework | Manual SQL Transformation |
+| 📊 BI Integration | Power BI / Metabase (opsional) |
 
-⚠️ Integrity Check: mendeteksi orphan record, duplikasi, dan nilai negatif.
+---
 
-💹 Business Intelligence Insights
+## 📂 Struktur File SQL  
 
-📆 Monthly Sales Performance: menampilkan pendapatan, laba, dan margin tiap bulan.
+| No | File | Deskripsi |
+|----|------|------------|
+| 1️⃣ | **01_Create_DWH_Toko_Sepatu.sql** | Membuat struktur database `dwh_toko_sepatu`, mencakup tabel dimensi (`dim_produk`, `dim_pelanggan`, `dim_toko`, `dim_waktu`, `dim_supplier`, dll.) dan tabel fakta (`fact_penjualan`, `fact_pembelian`) lengkap dengan relasi dan indeks. |
+| 2️⃣ | **02_ETL_DWH_Toko_Sepatu.sql** | Melakukan proses **ETL (Extract, Transform, Load)** dari `db_toko_sepatu` ke `dwh_toko_sepatu`, termasuk transformasi data, pembentukan dimensi waktu, serta perhitungan HPP dan margin. |
+| 3️⃣ | **03_Query_Analytic.sql** | Kumpulan *analytical queries* untuk validasi data dan analisis bisnis seperti performa penjualan, produk terlaris, segmentasi pelanggan, dan profitabilitas produk. |
+| 4️⃣ | **db_toko_sepatu.sql** | Database sumber (OLTP) berisi tabel transaksi harian dan master data seperti `tb_produk`, `tb_pelanggan`, `tb_penjualan`, `tb_pembelian`, `tb_pegawai`. |
 
-👟 Top 10 Best Selling Products: menyoroti produk sepatu paling laris dan paling menguntungkan.
+---
 
-🏪 Sales by Store: menganalisis performa tiap cabang toko berdasarkan pendapatan.
+## 🧩 Data Quality Validation  
 
-🧍 Customer Segmentation: membedakan pelanggan berdasarkan gender dan segmen pembelian.
+| Validasi | Fungsi |
+|-----------|---------|
+| ✅ **Record Count Summary** | Mengecek kesesuaian jumlah baris antara OLTP dan DWH. |
+| 📅 **Date Range Coverage** | Memastikan kelengkapan periode waktu transaksi. |
+| ⚠️ **Integrity Check** | Mendeteksi *orphan key*, nilai negatif, dan duplikasi data. |
 
-📍 Sales by City: melihat kontribusi geografis penjualan di berbagai kota dan provinsi.
+---
 
-👨‍💼 Employee Performance: mengevaluasi produktivitas pegawai berdasarkan total penjualan.
+## 📊 Business Intelligence Insights  
 
-💳 Payment Method Analysis: mengukur preferensi metode pembayaran pelanggan.
+| Analisis | Deskripsi |
+|-----------|------------|
+| 📆 **Monthly Sales Performance** | Total transaksi, pendapatan, dan profit per bulan. |
+| 👟 **Top 10 Best Selling Products** | Produk sepatu paling laris dan menguntungkan. |
+| 🏪 **Sales by Store** | Analisis performa tiap cabang toko. |
+| 🧍 **Customer Segmentation** | Segmentasi pelanggan berdasarkan gender & tipe pembelian. |
+| 📍 **Sales by City** | Distribusi penjualan berdasarkan wilayah. |
+| 👨‍💼 **Employee Performance** | Kontribusi pegawai terhadap total penjualan. |
+| 💳 **Payment Method Analysis** | Proporsi transaksi per metode pembayaran. |
+| 📏 **Product Size Popularity** | Ukuran sepatu dengan penjualan tertinggi. |
+| 📦 **Inventory Turnover** | Perbandingan pembelian dan penjualan untuk menghitung rotasi stok. |
+| 💰 **Discount Impact** | Dampak diskon terhadap margin dan total penjualan. |
+| 🌟 **Product Profitability Matrix** | Klasifikasi produk menjadi *Star*, *Cash Cow*, *Niche*, atau *Dog*. |
 
-📏 Product Size Popularity: mengetahui ukuran sepatu yang paling banyak terjual.
+---
 
-📦 Inventory Turnover: membandingkan volume pembelian dan penjualan untuk mengukur perputaran stok.
+## 🧾 Ringkasan Eksekutif  
 
-💰 Discount Impact: menganalisis efek diskon terhadap margin dan volume penjualan.
+| Metrik | Nilai (Contoh) | Satuan |
+|--------|----------------|--------|
+| 💸 **Total Penjualan** | ± 120.000.000 | IDR |
+| 💰 **Total Profit** | ± 28.500.000 | IDR |
+| 📈 **Average Margin** | 23.75 | % |
+| 🛍️ **Total Transactions** | 420 | transaksi |
+| 👥 **Total Customers** | 185 | pelanggan |
+| 👟 **Total Products Sold** | 1.275 | unit |
+| 💳 **Average Transaction Value** | ± 285.000 | IDR |
 
-🌟 Product Profitability Matrix: mengklasifikasikan produk menjadi Star Product, Cash Cow, Niche Product, atau Dog Product berdasarkan profitabilitas.
+> 💡 *Nilai di atas bersifat ilustratif. Hasil aktual diambil dari eksekusi file* `03_Query_Analytic.sql`.
 
-🧾 Ringkasan Eksekutif
-Metrik	Nilai	Satuan
-💸 Total Penjualan	SUM(subtotal_penjualan)	IDR
-💰 Total Profit	SUM(total_profit)	IDR
-📈 Average Margin	AVG(profit_margin_persen)	%
-🛍️ Total Transactions	COUNT(penjualan_id)	transaksi
-👥 Total Customers	COUNT(pelanggan_key)	pelanggan
-👟 Total Products Sold	SUM(jumlah_qty)	unit
-💳 Avg Transaction Value	AVG(subtotal_penjualan)	IDR
+---
 
-Semua query pada file 03_Query_Analytic.sql telah diverifikasi untuk memberikan validasi dan insight bisnis yang konsisten, siap digunakan untuk dashboard BI atau laporan eksekutif.
+## ✅ Status Proyek  
+
+| Status | Keterangan |
+|--------|-------------|
+| 🟢 **ETL Process** | Berhasil dilakukan antara MySQL → PostgreSQL |
+| 🧮 **Data Validation** | Semua uji validasi dan integritas lulus |
+| 📊 **Analytic Queries** | Berhasil menghasilkan insight dan laporan |
+| 🚀 **Project Status** | Completed & siap diintegrasikan ke BI Tools |
+
+---
+
+## 🌐 Integrasi BI (Opsional)  
+
+| Tools | Fungsi |
+|--------|--------|
+| **Power BI** | Visualisasi performa penjualan, pelanggan, dan produk. |
+| **Metabase** | Dashboard analisis interaktif untuk tim bisnis. |
+
+---
+
+## 🏁 Kesimpulan  
+
+Data Warehouse Toko Sepatu berhasil dibangun dengan struktur **Star Schema** yang kuat dan proses **ETL lintas platform** yang stabil.  
+Semua *analytical queries* memberikan insight yang akurat untuk kebutuhan analisis penjualan, pembelian, pelanggan, dan produk.  
+Proyek ini siap diintegrasikan ke dashboard BI untuk analisis lanjutan dan pengambilan keputusan strategis.
+
+---
+
+> ✅ **ETL & Analytics Validation Completed!**  
+> 📦 DWH siap digunakan untuk analisis bisnis dan integrasi Business Intelligence.
+
